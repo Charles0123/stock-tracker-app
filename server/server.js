@@ -25,6 +25,11 @@ app.get("/", (req, res) => {
   res.end("後端伺服器運行中!  ");
 });
 
+// 引入股票路由
+const stockRoutes = require("./routes/stockRoutes");
+// 使用股票路由，所有與股票相關的 API 都會以 /api/stocks 開頭
+app.use("/api/stocks", stockRoutes);
+
 // 啟動伺服器
 app.listen(PORT, () => {
   console.log(`伺服器已啟動，正在監聽 ${PORT} 端口...`);
