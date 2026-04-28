@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
+// 引入股票路由
+const stockRoutes = require("./routes/stockRoutes");
 // 讀取 .env 檔案中的環境變數
 dotenv.config();
 
@@ -25,8 +26,6 @@ app.get("/", (req, res) => {
   res.end("後端伺服器運行中!  ");
 });
 
-// 引入股票路由
-const stockRoutes = require("./routes/stockRoutes");
 // 使用股票路由，所有與股票相關的 API 都會以 /api/stocks 開頭
 app.use("/api/stocks", stockRoutes);
 
