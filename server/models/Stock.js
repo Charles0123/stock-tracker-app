@@ -8,4 +8,4 @@ const StockSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }, // 建立時間，預設為當前時間
 });
 
-module.exports = mongoose.nodel("Stock", StockSchema);
+module.exports = mongoose.model("Stock", StockSchema);
