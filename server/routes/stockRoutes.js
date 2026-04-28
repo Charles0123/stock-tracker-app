@@ -1,11 +1,11 @@
-const exporess = require("express");
-const router = exporess.Router();
+const express = require("express");
+const router = express.Router();
 const Stock = require("../models/Stock"); // 引入 Stock 模型
 
 // 1. Get all stocks
 router.get("/", async (req, res) => {
   try {
-    const stocks = await Stock.fint().sort({ createAt: -1 }); // 依照建立時間排序，最新的在前面
+    const stocks = await Stock.find().sort({ createdAt: -1 }); // 依照建立時間排序，最新的在前面
     res.json(stocks);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -15,10 +15,10 @@ router.get("/", async (req, res) => {
 // 2. POST a new stock
 router.post("/", async (req, res) => {
   const stock = new Stock({
-    synbol: req.body.synbol,
+    symbol: req.body.symbol,
     name: req.body.name,
-    tartgetPrice: req.body.targetPrice,
-    notes: req.body.notes,
+    targetPrice: req.body.targetPrice,
+    noted: req.body.noted,
   });
   try {
     const newStock = await stock.save();
